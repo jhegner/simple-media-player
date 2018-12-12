@@ -4,3 +4,6 @@
 .project
 
 .settings
+
+# Diretorio dos artefatos bin
+bin
