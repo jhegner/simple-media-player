@@ -8,3 +8,6 @@
 
 # Diretorio dos artefatos bin
 bin
+
+# Arquivo merge
+*.orig
