@@ -1,4 +1,4 @@
-package br.com.jhegner.fxsp.view;
+package br.com.jhegner.smp.view;
 
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
