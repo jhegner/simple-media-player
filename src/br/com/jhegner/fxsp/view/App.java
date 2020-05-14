@@ -77,7 +77,7 @@ public class App extends Application {
 
 			ps.play();
 
-			exibirSplash = Boolean.FALSE;
+			exibirSplash = Boolean.TRUE;
 
 		} else {
 			stage.show();
@@ -94,7 +94,7 @@ public class App extends Application {
 		// musica
 		ButtonBase btnMusica = (ButtonBase) scene.lookup("#" + "btnMusica");
 		btnMusica.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/img/note-128.png"))));
-		btnMusica.setTooltip(new Tooltip("Música"));
+		btnMusica.setTooltip(new Tooltip("Musica"));
 
 		// imagem
 		ButtonBase btnImagem = (ButtonBase) scene.lookup("#" + "btnImagem");
@@ -104,7 +104,7 @@ public class App extends Application {
 		// video
 		ButtonBase btnVideo = (ButtonBase) scene.lookup("#" + "btnVideo");
 		btnVideo.setGraphic(new ImageView(new Image(getClass().getResourceAsStream("/img/video-call-128.png"))));
-		btnVideo.setTooltip(new Tooltip("Vídeo"));
+		btnVideo.setTooltip(new Tooltip("Video"));
 
 	}
 
