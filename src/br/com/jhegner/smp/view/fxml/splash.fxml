@@ -6,7 +6,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="141.0" layoutY="138.0" strokeType="INSIDE" strokeWidth="0.0" text="Simple Player" textAlignment="CENTER" wrappingWidth="433.33935546875">
+      <Text layoutX="141.0" layoutY="138.0" strokeType="INSIDE" strokeWidth="0.0" text="Simple Media Player" textAlignment="CENTER" wrappingWidth="433.33935546875">
          <font>
             <Font name="David" size="43.0" />
          </font>

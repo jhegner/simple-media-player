@@ -53,7 +53,7 @@ public class App extends Application {
 		Parent main = FXMLLoader.load(getClass().getResource("fxml/main.fxml"));
 		Scene scene = new Scene(main);
 
-		stage.setTitle("Simple Player");
+		stage.setTitle("Simple Media Player");
 		stage.setScene(scene);
 		stage.centerOnScreen();
 		stage.setResizable(Boolean.FALSE);
