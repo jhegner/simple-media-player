@@ -19,8 +19,7 @@ import javafx.util.Duration;
 /**
  * Classe de inicio do app.
  * 
- * @author Jidlafe Hegner
- * @since 11/12/2018
+ * @author jhegner
  *
  */
 public class App extends Application {
