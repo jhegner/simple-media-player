@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="141.0" layoutY="138.0" strokeType="INSIDE" strokeWidth="0.0" text="Simple Media Player" textAlignment="CENTER" wrappingWidth="433.33935546875">
+         <font>
+            <Font name="David" size="43.0" />
+         </font>
+      </Text>
+      <Text layoutX="141.0" layoutY="175.0" strokeType="INSIDE" strokeWidth="0.0" text="Play music, picture and video. Made with ♥ on JavaFX." textAlignment="CENTER" wrappingWidth="433.33935546875">
+         <font>
+            <Font name="Barlow Regular" size="16.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="632.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d64d4d00" height="632.0" stroke="BLACK" strokeType="INSIDE" width="118.0" />
+      <Button fx:id="play" layoutX="33.0" layoutY="75.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="37.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../img/logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="44.0" layoutY="124.0" text="Play">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="44.0" layoutY="206.0" text="Stop">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="stop" layoutX="33.0" layoutY="157.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="anterior" layoutX="31.0" layoutY="316.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Label layoutX="34.0" layoutY="364.0" text="Anterior">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="282.0" text="Próximo">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="proximo" layoutX="33.0" layoutY="232.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="repetir" layoutX="31.0" layoutY="394.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Label layoutX="35.0" layoutY="444.0" text="Repetir">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="525.0" text="Aleatório">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="aleatorio" layoutX="31.0" layoutY="476.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="silencio" layoutX="31.0" layoutY="556.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Label layoutX="33.0" layoutY="605.0" text="Silêncio">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Hyperlink layoutX="130.0" layoutY="19.0" text="Abrir">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Hyperlink>
+      <Hyperlink layoutX="634.0" layoutY="19.0" text="Voltar">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Hyperlink>
+      <Label layoutX="552.0" layoutY="586.0" text="Simple Media Player">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="611.0" layoutY="607.0" text="Versão - 0.0.1">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelTitulo" layoutX="258.0" layoutY="76.0" prefHeight="20.0" prefWidth="422.0" text="Título" textAlignment="CENTER" textFill="#6c7379">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="116.0" fitWidth="118.0" layoutX="130.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../img/album2.jpg" />
+         </image>
+      </ImageView>
+      <Hyperlink layoutX="189.0" layoutY="19.0" text="Info">
+         <font>
+            <Font name="Arial" size="16.0" />
+         </font>
+      </Hyperlink>
+      <Label fx:id="labelAlbum" layoutX="258.0" layoutY="105.0" prefHeight="20.0" prefWidth="422.0" text="Album" textAlignment="CENTER" textFill="#6c7379">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <ProgressBar fx:id="progressBar" layoutX="258.0" layoutY="163.0" prefHeight="28.0" prefWidth="422.0" progress="0.43" />
+      <Label fx:id="labelDuracao" layoutX="258.0" layoutY="134.0" prefHeight="20.0" prefWidth="422.0" text="Duração" textAlignment="CENTER" textFill="#6c7379">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listView" layoutX="130.0" layoutY="211.0" prefHeight="356.0" prefWidth="548.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="350.0" layoutY="586.0" prefHeight="20.0" prefWidth="75.0" text="MUSIC" textAlignment="CENTER" textFill="#b28236">
+         <font>
+            <Font size="10.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
