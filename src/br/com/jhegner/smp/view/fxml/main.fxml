@@ -6,14 +6,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.jhegner.smp.view.MainController">
    <children>
       <Text layoutX="242.0" layoutY="52.0" strokeType="INSIDE" strokeWidth="0.0" text="Simple Media Player" textAlignment="CENTER" wrappingWidth="218.33935546875">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="btnMusica" layoutX="31.0" layoutY="83.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="181.0" />
+      <Button fx:id="btnMusica" layoutX="31.0" layoutY="83.0" mnemonicParsing="false" onAction="#goMusicView" prefHeight="135.0" prefWidth="181.0" />
       <Button fx:id="btnImagem" layoutX="261.0" layoutY="83.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="181.0" />
       <Button fx:id="btnVideo" layoutX="488.0" layoutY="83.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="181.0" />
       <Label layoutX="101.0" layoutY="230.0" text="Música">
