@@ -33,4 +33,6 @@ public abstract class AbstractController {
 			btnConf.setTooltip(new Tooltip(botao.getTooltip()));
 		}
 	}
+	
+	abstract void goMain(ActionEvent currentEvent);
 }

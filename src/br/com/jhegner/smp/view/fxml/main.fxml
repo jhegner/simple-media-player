@@ -13,9 +13,9 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Button fx:id="btnMusica" layoutX="31.0" layoutY="83.0" mnemonicParsing="false" onAction="#goMusicView" prefHeight="135.0" prefWidth="181.0" />
-      <Button fx:id="btnImagem" layoutX="261.0" layoutY="83.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="181.0" />
-      <Button fx:id="btnVideo" layoutX="488.0" layoutY="83.0" mnemonicParsing="false" prefHeight="135.0" prefWidth="181.0" />
+      <Button fx:id="btnMusica" layoutX="31.0" layoutY="83.0" mnemonicParsing="false" onAction="#goMusicaView" prefHeight="135.0" prefWidth="181.0" />
+      <Button fx:id="btnImagem" layoutX="261.0" layoutY="83.0" mnemonicParsing="false" onAction="#goImagemView" prefHeight="135.0" prefWidth="181.0" />
+      <Button fx:id="btnVideo" layoutX="488.0" layoutY="83.0" mnemonicParsing="false" onAction="#goVideoView" prefHeight="135.0" prefWidth="181.0" />
       <Label layoutX="101.0" layoutY="230.0" text="Música">
          <font>
             <Font name="System Bold" size="14.0" />

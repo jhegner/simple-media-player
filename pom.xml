@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.jhegner.fxsp</groupId>
-	<artifactId>javafx-simple-player</artifactId>
+	<groupId>br.com.jhegner.smp</groupId>
+	<artifactId>simple-media-player</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>javafx-simple-player</name>
-	<description>Play music, picture and video. </description>
+	<name>simple-media-player</name>
+	<description>Play music, picture and video.</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -33,6 +33,25 @@
 			<artifactId>slf4j-api</artifactId>
 			<version>1.7.30</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.11.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mp4parser</groupId>
+			<artifactId>isoparser</artifactId>
+			<version>1.9.27</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org</groupId>
+			<artifactId>jaudiotagger</artifactId>
+			<version>2.0.3</version>
+		</dependency>
+
 
 	</dependencies>
 
