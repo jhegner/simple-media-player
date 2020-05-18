@@ -1,5 +1,8 @@
 package br.com.jhegner.smp.view;
 
+import java.io.IOException;
+
+import br.com.jhegner.smp.enums.ETexto;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -15,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Classe de inicio do app.
@@ -22,68 +26,86 @@ import javafx.util.Duration;
  * @author jhegner
  *
  */
+@Slf4j
 public class App extends Application {
 
 	private static boolean exibirSplash = Boolean.TRUE;
 
 	@Override
-	public void start(final Stage stage) throws Exception {
+	public void start(final Stage stage) {
+		
+		log.info("Iniciando o Simple Media Player");
 
-		final Stage splashStage = new Stage();
+		try {
+			
+			final Stage splashStage = new Stage();
 
-		if (exibirSplash) {
+			if (exibirSplash) {
+				
+				log.debug("Preparando Splash para exibicao");
 
-			// splash (tela boas vindas)
-			Parent splash = FXMLLoader.load(getClass().getResource("fxml/splash.fxml"));
+				// splash (tela boas vindas)
+				Parent splash = FXMLLoader.load(getClass().getResource("fxml/splash.fxml"));
 
-			Scene scene = new Scene(splash);
-			scene.setCursor(Cursor.WAIT);
-			splashStage.setScene(scene);
+				Scene scene = new Scene(splash);
+				scene.setCursor(Cursor.WAIT);
+				
+				splashStage.setScene(scene);
+				splashStage.centerOnScreen();
+				splashStage.initStyle(StageStyle.UNDECORATED);
+				splashStage.getIcons().add(new Image("/img/logo.png"));
 
-			splashStage.centerOnScreen();
-			splashStage.initStyle(StageStyle.UNDECORATED);
+				log.debug("Exibindo tela splash");
+				splashStage.show();
+			}
+
+			// tela principal
+			Parent main = FXMLLoader.load(getClass().getResource("fxml/main.fxml"));
+			Scene scene = new Scene(main);
+
+			stage.setTitle(ETexto.TITULO.getTexto());
+			stage.setScene(scene);
+			stage.centerOnScreen();
+			stage.setResizable(Boolean.FALSE);
 			stage.getIcons().add(new Image("/img/logo.png"));
 
-			splashStage.show();
+			// botoes
+			configuraBotoes(scene);
 
-		}
+			if (exibirSplash) {
+				
+				log.debug("Configurando tempo de exibicao da janela Splash");
+				log.debug("Duracao de 3000 millisecond");
+				
+				// transicao do splash
+				PauseTransition ps = new PauseTransition(new Duration(3000));
+				ps.setOnFinished(new EventHandler<ActionEvent>() {
 
-		// tela principal
-		Parent main = FXMLLoader.load(getClass().getResource("fxml/main.fxml"));
-		Scene scene = new Scene(main);
+					public void handle(ActionEvent event) {
+						log.info("Fechando a janela Splash e exibindo a janela principal");
+						// fecha o palco do splash
+						splashStage.close();
+						// exibe o palco principal
+						stage.show();
+					}
+				});
 
-		stage.setTitle("Simple Media Player");
-		stage.setScene(scene);
-		stage.centerOnScreen();
-		stage.setResizable(Boolean.FALSE);
+				ps.play();
 
-		// botoes
-		configuraBotoes(scene);
+				exibirSplash = Boolean.FALSE;
 
-		if (exibirSplash) {
-
-			// transicao do splash
-			PauseTransition ps = new PauseTransition(new Duration(5000));
-			ps.setOnFinished(new EventHandler<ActionEvent>() {
-
-				public void handle(ActionEvent event) {
-					// fecha o palco do splash
-					splashStage.close();
-					// exibe o palco principal
-					stage.show();
-				}
-			});
-
-			ps.play();
-
-			exibirSplash = Boolean.TRUE;
-
-		} else {
-			stage.show();
+			} else {
+				stage.show();
+			}
+			
+		} catch (IOException e) {
+			log.error("Erro ao abrir arquivo fxml", e);
 		}
 	}
 
 	private void configuraBotoes(Scene scene) {
+		
+		log.debug("Configurando botoes da tela principal");
 
 		// conf
 		ButtonBase btnConf = (ButtonBase) scene.lookup("#" + "btnConf");
