@@ -57,12 +57,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="130.0" layoutY="19.0" text="Abrir">
+      <Hyperlink fx:id="abrirLink" layoutX="130.0" layoutY="19.0" onAction="#abrir" text="Abrir">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Hyperlink>
-      <Hyperlink layoutX="222.0" layoutY="19.0" onAction="#goMainView" text="Voltar">
+      <Hyperlink layoutX="174.0" layoutY="19.0" onAction="#voltar" text="Voltar">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
@@ -87,11 +87,6 @@
             <Image url="@../../../../../../img/album2.jpg" />
          </image>
       </ImageView>
-      <Hyperlink layoutX="180.0" layoutY="19.0" text="Info">
-         <font>
-            <Font name="Arial" size="16.0" />
-         </font>
-      </Hyperlink>
       <Label fx:id="labelAlbum" layoutX="258.0" layoutY="105.0" prefHeight="20.0" prefWidth="422.0" text="Album" textAlignment="CENTER" textFill="#6c7379">
          <font>
             <Font name="System Bold Italic" size="14.0" />

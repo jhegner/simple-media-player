@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import br.com.jhegner.smp.enums.EMidia;
 import br.com.jhegner.smp.enums.ETexto;
+import br.com.jhegner.smp.util.ResourceUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -70,7 +70,7 @@ public class MainController extends AbstractController{
 
 	private void abreMidiaPlayerView(EMidia midia) throws IOException {
 		
-		Parent fxmlRoot = FXMLLoader.load(getClass().getResource("fxml/midia-player.fxml"));
+		Parent fxmlRoot = ResourceUtil.getMediaPlayerResource();
 		Scene scene = new Scene(fxmlRoot);
 		
 		Stage stage = new Stage();
@@ -87,7 +87,7 @@ public class MainController extends AbstractController{
 	}
 
 	@Override
-	void goMain(ActionEvent currentEvent) {
+	void goMainView(ActionEvent currentEvent) {
 		throw new UnsupportedOperationException("Operacao nao suportada");
 	}
 }

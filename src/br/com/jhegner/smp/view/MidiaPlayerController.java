@@ -1,16 +1,12 @@
 package br.com.jhegner.smp.view;
 
-import java.io.IOException;
-
-import br.com.jhegner.smp.enums.EMidia;
-import br.com.jhegner.smp.enums.ETexto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
+import javafx.scene.control.Hyperlink;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -20,24 +16,41 @@ import lombok.extern.slf4j.Slf4j;
  *
  */
 @Slf4j
+@NoArgsConstructor
 public class MidiaPlayerController extends AbstractController{
 	
-	public MidiaPlayerController() {
-		super();
+	@FXML
+	private Hyperlink abrirLink;
+	
+	@FXML
+	protected void voltar(ActionEvent event) {
+		log.debug("Exibindo a tela principal");
+		this.goMainView(event);
 	}
 	
 	@FXML
-	protected void goMainView(ActionEvent event) {
-
-		this.goMain(event);
+	protected void abrir(ActionEvent event) {
+		
+		log.debug("Abrindo caixa de selecao de arquivo");
+		
+		Scene scene = abrirLink.getScene();
+		
+		Stage stage = new Stage();
+        stage.setResizable(Boolean.FALSE);
+        stage.setScene(scene);
+		
+		// abre janela de dialogo
+		FileChooser fileChooser = new FileChooser();
+		fileChooser.setTitle("Abrir");
+		fileChooser.showOpenDialog(stage);	
 	}
 
 	@Override
-	void goMain(ActionEvent currentEvent) {
+	void goMainView(ActionEvent currentEvent) {
 		
 		fecharJanela(currentEvent);
 		
 		App app = new App();
-		app.start(new Stage());		
+		app.start(new Stage());	
 	}
 }
