@@ -34,5 +34,5 @@ public abstract class AbstractController {
 		}
 	}
 	
-	abstract void goMain(ActionEvent currentEvent);
+	abstract void goMainView(ActionEvent currentEvent);
 }
