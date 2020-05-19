@@ -5,8 +5,7 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum ETexto {
 	
-	TITULO("Simple Media Player"),
-	TITULO_JANElA_SELECAO_ARQUIVO("Simple Media Player - Abrir arquivo de media");
+	TITULO("Simple Media Player");
 
 	private String texto;
 	

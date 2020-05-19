@@ -1,6 +1,5 @@
 package br.com.jhegner.smp.view;
 
-import br.com.jhegner.smp.enums.ETexto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
@@ -42,7 +41,7 @@ public class MidiaPlayerController extends AbstractController{
 		
 		// abre janela de dialogo
 		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle(ETexto.TITULO_JANElA_SELECAO_ARQUIVO.getTexto());
+		fileChooser.setTitle("Abrir");
 		fileChooser.showOpenDialog(stage);	
 	}
 
