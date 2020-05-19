@@ -3,11 +3,11 @@ package br.com.jhegner.smp.view;
 import java.io.IOException;
 
 import br.com.jhegner.smp.enums.ETexto;
+import br.com.jhegner.smp.util.ResourceUtil;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -45,7 +45,7 @@ public class App extends Application {
 				log.debug("Preparando Splash para exibicao");
 
 				// splash (tela boas vindas)
-				Parent splash = FXMLLoader.load(getClass().getResource("fxml/splash.fxml"));
+				Parent splash = ResourceUtil.getSplashResource();
 
 				Scene scene = new Scene(splash);
 				scene.setCursor(Cursor.WAIT);
@@ -60,7 +60,7 @@ public class App extends Application {
 			}
 
 			// tela principal
-			Parent main = FXMLLoader.load(getClass().getResource("fxml/main.fxml"));
+			Parent main = ResourceUtil.getMain();
 			Scene scene = new Scene(main);
 
 			stage.setTitle(ETexto.TITULO.getTexto());
