@@ -57,12 +57,12 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="130.0" layoutY="19.0" text="Abrir">
+      <Hyperlink fx:id="abrirLink" layoutX="130.0" layoutY="19.0" onAction="#abrir" text="Abrir">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
       </Hyperlink>
-      <Hyperlink layoutX="174.0" layoutY="19.0" onAction="#goMainView" text="Voltar">
+      <Hyperlink layoutX="174.0" layoutY="19.0" onAction="#voltar" text="Voltar">
          <font>
             <Font name="Arial" size="16.0" />
          </font>
