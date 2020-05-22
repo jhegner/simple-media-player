@@ -1,6 +1,6 @@
 package br.com.jhegner.smp.domain;
 
-import br.com.jhegner.smp.enums.EMidia;
+import br.com.jhegner.smp.enums.EMedia;
 import lombok.Getter;
 
 /**
@@ -19,7 +19,7 @@ public class ArquivoAudio extends Arquivo{
 	private String album;
 	private String artista;
 	
-	public ArquivoAudio(String nome, String local, long tamanho, EMidia midia) {
+	public ArquivoAudio(String nome, String local, long tamanho, EMedia midia) {
 		super(nome, local, tamanho, midia);
 	}
 	

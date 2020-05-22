@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import org.apache.commons.io.FilenameUtils;
 
-import br.com.jhegner.smp.enums.EMidia;
+import br.com.jhegner.smp.enums.EMedia;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -23,7 +23,7 @@ public class Arquivo implements Serializable{
 	private final String nome;
 	private final String local;
 	private final long tamanho;
-	private final EMidia midia;
+	private final EMedia midia;
 	
 	public String getNomeBase() {
 		return FilenameUtils.getBaseName(getNome());
@@ -35,5 +35,10 @@ public class Arquivo implements Serializable{
 	
 	public String getExtensao() {
 		return FilenameUtils.getExtension(getNome());
+	}
+	
+	@Override
+	public String toString() {
+		return getNome(); // usado no listView
 	}
 }
