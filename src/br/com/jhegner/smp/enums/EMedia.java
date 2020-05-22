@@ -1,5 +1,5 @@
 package br.com.jhegner.smp.enums;
 
-public enum EMidia {
+public enum EMedia {
 	MUSICA, IMAGEM, VIDEO
 }

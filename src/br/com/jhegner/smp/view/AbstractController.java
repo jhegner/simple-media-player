@@ -1,7 +1,7 @@
 package br.com.jhegner.smp.view;
 
 import br.com.jhegner.smp.enums.EBotao;
-import br.com.jhegner.smp.enums.EMidia;
+import br.com.jhegner.smp.enums.EMedia;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -23,9 +23,11 @@ public abstract class AbstractController {
 		Node source = (Node) currentEvent.getSource();
 		Stage current = (Stage) source.getScene().getWindow();
 		current.close();
+		
+		System.gc();
 	}
 	
-	void configuraBotoes(Scene scene, EMidia midia) {
+	void configuraBotoes(Scene scene, EMedia midia) {
 		
 		for(EBotao botao : EBotao.values()) {
 			ButtonBase btnConf = (ButtonBase) scene.lookup(botao.getId());

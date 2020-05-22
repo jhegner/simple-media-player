@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum EBotao {
 	
-	PLAY("#play", "Play", "/img/play-32.png"),
-	STOP("#stop", "Stop", "/img/stop-32.png"),
+	PLAY("#reproduzir", "Reproduzir", "/img/play-32.png"),
+	STOP("#parar", "Parar", "/img/stop-32.png"),
 	PROXIMO("#proximo", "Proximo", "/img/media-skip-forward-32.png"),
 	ANTERIOR("#anterior", "Anterior", "/img/media-skip-backward-32.png"),
 	REPETIR("#repetir", "Repetir", "/img/recurring-appointment-32.png"),

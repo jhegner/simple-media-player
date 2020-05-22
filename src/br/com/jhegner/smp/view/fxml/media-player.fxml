@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.jhegner.smp.view.MidiaPlayerController">
    <children>
-      <Button fx:id="play" layoutX="33.0" layoutY="75.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="reproduzir" layoutX="33.0" layoutY="75.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
       <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="37.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../img/logo.png" />
@@ -26,7 +26,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="stop" layoutX="33.0" layoutY="157.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="parar" layoutX="33.0" layoutY="157.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
       <Button fx:id="anterior" layoutX="31.0" layoutY="316.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
       <Label layoutX="34.0" layoutY="361.0" text="Anterior">
          <font>
@@ -100,5 +100,9 @@
       </Label>
       <ListView fx:id="listView" layoutX="130.0" layoutY="211.0" prefHeight="356.0" prefWidth="548.0" />
       <Separator layoutX="109.0" orientation="VERTICAL" prefHeight="630.0" prefWidth="6.0" />
+      <Label fx:id="lblMedia" alignment="CENTER" contentDisplay="TOP" layoutX="29.0" layoutY="45.0" prefHeight="17.0" prefWidth="57.0" text="MEDIA" textFill="#dd840f">
+         <font>
+            <Font size="10.0" />
+         </font></Label>
    </children>
 </AnchorPane>
