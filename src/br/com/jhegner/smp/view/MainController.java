@@ -2,13 +2,14 @@ package br.com.jhegner.smp.view;
 
 import java.io.IOException;
 
-import br.com.jhegner.smp.enums.EMidia;
+import br.com.jhegner.smp.enums.EMedia;
 import br.com.jhegner.smp.enums.ETexto;
 import br.com.jhegner.smp.util.ResourceUtil;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +34,7 @@ public class MainController extends AbstractController{
 			
 			fecharJanela(event);
 			
-			abreMidiaPlayerView(EMidia.MUSICA);
+			abreMidiaPlayerView(EMedia.MUSICA);
 		
 		} catch (IOException e) {
 			log.error("Erro ao abrir a view musica", e);
@@ -47,7 +48,7 @@ public class MainController extends AbstractController{
 			
 			fecharJanela(event);
 			
-			abreMidiaPlayerView(EMidia.IMAGEM);
+			abreMidiaPlayerView(EMedia.IMAGEM);
 			
 		} catch (IOException e) {
 			log.error("Erro ao abrir a view imagem", e);
@@ -61,14 +62,14 @@ public class MainController extends AbstractController{
 			
 			fecharJanela(event);
 			
-			abreMidiaPlayerView(EMidia.VIDEO);
+			abreMidiaPlayerView(EMedia.VIDEO);
 			
 		} catch (IOException e) {
 			log.error("Erro ao abrir a view video", e);
 		}
 	}
 
-	private void abreMidiaPlayerView(EMidia midia) throws IOException {
+	private void abreMidiaPlayerView(EMedia media) throws IOException {
 		
 		Parent fxmlRoot = ResourceUtil.getMediaPlayerResource();
 		Scene scene = new Scene(fxmlRoot);
@@ -78,12 +79,16 @@ public class MainController extends AbstractController{
         stage.setResizable(Boolean.FALSE);
         stage.setScene(scene);
 
-        stage.setTitle(ETexto.TITULO.getTexto() + " - " + midia.name().toLowerCase());
+        stage.setTitle(ETexto.TITULO.getTexto());
         stage.getIcons().add(new Image("/img/logo.png"));
         
-        stage.setUserData(midia);
+        stage.setUserData(media);
         
-        configuraBotoes(scene, midia);
+        // label para identificar o tipo media
+        Label labelMedia = (Label) scene.lookup("#lblMedia");
+        labelMedia.setText(media.name());
+        
+        configuraBotoes(scene, media);
         
         stage.show();
 	}
