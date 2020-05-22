@@ -1,4 +1,4 @@
-package br.com.jhegner.smp.media;
+package br.com.jhegner.smp.domain;
 
 import java.io.Serializable;
 
