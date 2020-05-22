@@ -81,6 +81,8 @@ public class MainController extends AbstractController{
         stage.setTitle(ETexto.TITULO.getTexto() + " - " + midia.name().toLowerCase());
         stage.getIcons().add(new Image("/img/logo.png"));
         
+        stage.setUserData(midia);
+        
         configuraBotoes(scene, midia);
         
         stage.show();
