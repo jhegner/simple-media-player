@@ -1,8 +1,11 @@
 package br.com.jhegner.smp.view;
 
+import java.io.File;
+import java.util.List;
+
+import br.com.jhegner.smp.enums.EMidia;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Hyperlink;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -33,16 +36,68 @@ public class MidiaPlayerController extends AbstractController{
 		
 		log.debug("Abrindo caixa de selecao de arquivo");
 		
-		Scene scene = abrirLink.getScene();
+		Stage stage = (Stage) abrirLink.getScene().getWindow();
+        
+        FileChooser fileChooser = configuraFileChooser(stage);
+        List<File> files = fileChooser.showOpenMultipleDialog(stage);
+        
+        leArquivos(files);
+	}
+
+	private void leArquivos(List<File> files) {
 		
-		Stage stage = new Stage();
-        stage.setResizable(Boolean.FALSE);
-        stage.setScene(scene);
-		
+		if(null != files && files.size() != 0) {
+			// TODO preencher list view
+		}
+		else {
+			
+		}
+	}
+
+	private FileChooser configuraFileChooser(final Stage stage) {
+				
 		// abre janela de dialogo
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Abrir");
-		fileChooser.showOpenDialog(stage);	
+		fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+		configuraExtensao(fileChooser, stage);
+
+		return fileChooser;
+	}
+
+	private void configuraExtensao(final FileChooser fileChooser, final Stage stage) {
+		
+		EMidia midia = (EMidia) stage.getUserData();
+		
+		switch (midia) {
+
+			case MUSICA:
+				
+	            fileChooser.getExtensionFilters().addAll(
+	                    new FileChooser.ExtensionFilter("MP3", "*.mp3"),
+	                    new FileChooser.ExtensionFilter("WAV", "*.wav")
+	                );				
+				
+				break;
+	
+			case IMAGEM:
+				
+	            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("All Images", "*.*"),
+                    new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                    new FileChooser.ExtensionFilter("PNG", "*.png")
+                );
+				
+				break;
+	
+			case VIDEO:
+	            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("MP4", "*.mp4")
+                );
+	
+				break;
+		}
+		
 	}
 
 	@Override
