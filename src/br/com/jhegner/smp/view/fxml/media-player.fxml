@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.jhegner.smp.view.MidiaPlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.jhegner.smp.view.MediaPlayerController">
    <children>
       <Button fx:id="reproduzir" layoutX="33.0" layoutY="75.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
       <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="37.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
