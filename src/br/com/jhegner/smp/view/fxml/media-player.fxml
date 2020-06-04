@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.jhegner.smp.view.MidiaPlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.jhegner.smp.view.MediaPlayerController">
    <children>
       <Button fx:id="reproduzir" layoutX="33.0" layoutY="75.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
       <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="37.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
@@ -82,7 +82,7 @@
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="116.0" fitWidth="118.0" layoutX="130.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageViewAlbumImage" fitHeight="116.0" fitWidth="118.0" layoutX="130.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../img/album2.jpg" />
          </image>
@@ -92,7 +92,7 @@
             <Font name="System Bold Italic" size="14.0" />
          </font>
       </Label>
-      <ProgressBar fx:id="progressBar" layoutX="258.0" layoutY="163.0" prefHeight="28.0" prefWidth="422.0" progress="0.43" />
+      <ProgressBar fx:id="progressBar" layoutX="258.0" layoutY="163.0" prefHeight="28.0" prefWidth="422.0" progress="0.0" />
       <Label fx:id="labelDuracao" layoutX="258.0" layoutY="134.0" prefHeight="20.0" prefWidth="422.0" text="Duração" textAlignment="CENTER" textFill="#6c7379">
          <font>
             <Font name="System Bold Italic" size="14.0" />
