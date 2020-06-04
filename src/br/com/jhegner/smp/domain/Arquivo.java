@@ -30,7 +30,7 @@ public class Arquivo implements Serializable{
 	}
 	
 	public String getNomeCompleto() {
-		return (getNome() + getLocal());
+		return (getLocal());
 	}
 	
 	public String getExtensao() {
