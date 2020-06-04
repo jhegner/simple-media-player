@@ -8,6 +8,7 @@ import br.com.jhegner.smp.domain.Arquivo;
 import br.com.jhegner.smp.domain.ArquivoAudio;
 import br.com.jhegner.smp.domain.LeitorMetadadoArquivoAudio;
 import br.com.jhegner.smp.enums.EMedia;
+import br.com.jhegner.smp.listener.ListViewReproducaoChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,69 +28,74 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @NoArgsConstructor
-public class MediaPlayerController extends AbstractController{
-	
+public class MediaPlayerController extends AbstractController {
+
 	private EMedia midia;
 	private List<File> files;
 	private List<Arquivo> arquivos;
-	
+
 	@FXML
 	private Hyperlink abrirLink;
-	
+
 	@FXML
 	private ListView<Arquivo> listView;
-	
+
 	@FXML
 	protected void voltar(ActionEvent event) {
 		log.debug("Exibindo a tela principal");
 		this.goMainView(event);
 	}
-	
+
 	@FXML
 	protected void abrir(ActionEvent event) {
-		
+
 		log.debug("Abrindo caixa de selecao de arquivo");
-		
+
 		Stage stage = (Stage) abrirLink.getScene().getWindow();
-        
-        FileChooser fileChooser = configuraFileChooser(stage);
-        this.files = fileChooser.showOpenMultipleDialog(stage);
-        
-        leArquivos(this.files);
+
+		FileChooser fileChooser = configuraFileChooser(stage);
+		this.files = fileChooser.showOpenMultipleDialog(stage);
+
+		leArquivos(this.files);
 	}
 
 	private void leArquivos(List<File> files) {
-		
-		if(null != files && files.size() != 0) {
+
+		if (null != files && files.size() != 0) {
 			preencheListView(files);
+			configuraListView();
 		}
 	}
 
+	private void configuraListView() {
+		this.listView.getSelectionModel().selectedItemProperty()
+				.addListener(new ListViewReproducaoChangeListener(this.abrirLink.getScene()));
+	}
+
 	private void preencheListView(List<File> files) {
-		
+
 		this.arquivos = new LinkedList<>();
-		
-		for(File file : files) {
-			
+
+		for (File file : files) {
+
 			Arquivo arquivo;
-			
-			if(EMedia.MUSICA.equals(this.midia)) {
+
+			if (EMedia.MUSICA.equals(this.midia)) {
 				arquivo = new ArquivoAudio(file.getName(), file.getPath(), file.length(), this.midia);
-				LeitorMetadadoArquivoAudio.getInstance().le((ArquivoAudio)arquivo);
-			}
-			else {
+				LeitorMetadadoArquivoAudio.getInstance().le((ArquivoAudio) arquivo);
+			} else {
 				arquivo = new Arquivo(file.getName(), file.getParent(), file.length(), this.midia);
 			}
-			
+
 			this.arquivos.add(arquivo);
 		}
-		
+
 		ObservableList<Arquivo> obsList = FXCollections.observableArrayList(this.arquivos);
 		this.listView.setItems(obsList);
 	}
 
 	private FileChooser configuraFileChooser(final Stage stage) {
-				
+
 		// abre janela de dialogo
 		FileChooser fileChooser = new FileChooser();
 		fileChooser.setTitle("Abrir");
@@ -100,57 +106,50 @@ public class MediaPlayerController extends AbstractController{
 	}
 
 	private void configuraExtensao(final FileChooser fileChooser, final Stage stage) {
-		
+
 		this.midia = (EMedia) stage.getUserData();
-		
+
 		switch (this.midia) {
 
-			case MUSICA:
-				
-	            fileChooser.getExtensionFilters().addAll(
-	                    new FileChooser.ExtensionFilter("MP3", "*.mp3"),
-	                    new FileChooser.ExtensionFilter("WAV", "*.wav")
-	                );				
-				
-				break;
-	
-			case IMAGEM:
-				
-	            fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("All Images", "*.*"),
-                    new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                    new FileChooser.ExtensionFilter("PNG", "*.png")
-                );
-				
-				break;
-	
-			case VIDEO:
-	            fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("MP4", "*.mp4")
-                );
-	
-				break;
+		case MUSICA:
+
+			fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("MP3", "*.mp3"),
+					new FileChooser.ExtensionFilter("WAV", "*.wav"));
+
+			break;
+
+		case IMAGEM:
+
+			fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Images", "*.*"),
+					new FileChooser.ExtensionFilter("JPG", "*.jpg"), new FileChooser.ExtensionFilter("PNG", "*.png"));
+
+			break;
+
+		case VIDEO:
+			fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("MP4", "*.mp4"));
+
+			break;
 		}
-		
+
 	}
 
 	@Override
 	void goMainView(ActionEvent currentEvent) {
-		
+
 		limparObjs();
 		fecharJanela(currentEvent);
-		
+
 		App app = new App();
-		app.start(new Stage());	
+		app.start(new Stage());
 	}
 
 	private void limparObjs() {
-		
-		if(null != files) {
+
+		if (null != files) {
 			this.files = null;
 		}
-		
-		if(null != arquivos) {
+
+		if (null != arquivos) {
 			this.arquivos.clear();
 			this.arquivos = null;
 		}
