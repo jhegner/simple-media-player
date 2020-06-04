@@ -6,6 +6,7 @@ import java.util.List;
 
 import br.com.jhegner.smp.domain.Arquivo;
 import br.com.jhegner.smp.domain.ArquivoAudio;
+import br.com.jhegner.smp.domain.LeitorMetadadoArquivoAudio;
 import br.com.jhegner.smp.enums.EMedia;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,7 +27,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @NoArgsConstructor
-public class MidiaPlayerController extends AbstractController{
+public class MediaPlayerController extends AbstractController{
 	
 	private EMedia midia;
 	private List<File> files;
@@ -74,6 +75,7 @@ public class MidiaPlayerController extends AbstractController{
 			
 			if(EMedia.MUSICA.equals(this.midia)) {
 				arquivo = new ArquivoAudio(file.getName(), file.getPath(), file.length(), this.midia);
+				LeitorMetadadoArquivoAudio.getInstance().le((ArquivoAudio)arquivo);
 			}
 			else {
 				arquivo = new Arquivo(file.getName(), file.getParent(), file.length(), this.midia);
@@ -145,7 +147,6 @@ public class MidiaPlayerController extends AbstractController{
 	private void limparObjs() {
 		
 		if(null != files) {
-			this.files.clear();
 			this.files = null;
 		}
 		
