@@ -9,11 +9,11 @@ import br.com.jhegner.smp.domain.ArquivoAudio;
 import br.com.jhegner.smp.domain.LeitorMetadadoArquivoAudio;
 import br.com.jhegner.smp.enums.EMedia;
 import br.com.jhegner.smp.listener.ListViewReproducaoChangeListener;
+import br.com.jhegner.smp.view.helper.MediaPlayerViewHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
 import javafx.scene.control.ListView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -35,9 +35,6 @@ public class MediaPlayerController extends AbstractController {
 	private List<Arquivo> arquivos;
 
 	@FXML
-	private Hyperlink abrirLink;
-
-	@FXML
 	private ListView<Arquivo> listView;
 
 	@FXML
@@ -51,7 +48,7 @@ public class MediaPlayerController extends AbstractController {
 
 		log.debug("Abrindo caixa de selecao de arquivo");
 
-		Stage stage = (Stage) abrirLink.getScene().getWindow();
+		Stage stage = (Stage) listView.getScene().getWindow();
 
 		FileChooser fileChooser = configuraFileChooser(stage);
 		this.files = fileChooser.showOpenMultipleDialog(stage);
@@ -69,7 +66,7 @@ public class MediaPlayerController extends AbstractController {
 
 	private void configuraListView() {
 		this.listView.getSelectionModel().selectedItemProperty()
-				.addListener(new ListViewReproducaoChangeListener(this.abrirLink.getScene()));
+				.addListener(new ListViewReproducaoChangeListener(this.listView.getScene()));
 	}
 
 	private void preencheListView(List<File> files) {
@@ -92,6 +89,12 @@ public class MediaPlayerController extends AbstractController {
 
 		ObservableList<Arquivo> obsList = FXCollections.observableArrayList(this.arquivos);
 		this.listView.setItems(obsList);
+		
+		this.listView.getSelectionModel().select(0);
+		this.listView.scrollTo(0);
+		
+		MediaPlayerViewHelper helper = new MediaPlayerViewHelper();
+		helper.exibeMetadadosMedia(this.arquivos.get(0), this.listView.getScene());
 	}
 
 	private FileChooser configuraFileChooser(final Stage stage) {
