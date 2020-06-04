@@ -29,7 +29,7 @@ public class ArquivoAudio extends Arquivo{
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(titulo).append(" - ").append(artista);
+		sb.append(titulo).append(".").append(getExtensao()).append(" - ").append(artista);
 		return sb.toString();
 	}
 }
