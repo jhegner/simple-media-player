@@ -62,6 +62,14 @@ public class MediaPlayerController extends AbstractController {
 		configuraComponentes(listView.getScene());
 	}
 	
+	@FXML
+	protected void reproduzir(ActionEvent event) {
+		
+		log.debug("Reproduzindo a media");
+		
+		
+	}
+	
 	@SuppressWarnings("unchecked")
 	private void configuraComponentes(Scene scene) {
 		
