@@ -8,99 +8,117 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.jhegner.smp.view.MediaPlayerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.jhegner.smp.view.MediaPlayerController">
    <children>
-      <Button fx:id="reproduzir" layoutX="33.0" layoutY="75.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
-      <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="37.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+      <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="715.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Arquivo">
+            <items>
+              <MenuItem fx:id="menuItemAbrir" mnemonicParsing="false" onAction="#abrir" text="Abrir" />
+                  <MenuItem fx:id="menuItemVoltar" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Sair" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Multimídia">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Reproduzir" />
+                  <MenuItem mnemonicParsing="false" text="Parar" />
+                  <MenuItem mnemonicParsing="false" text="Próximo" />
+                  <MenuItem mnemonicParsing="false" text="Anterior" />
+                  <MenuItem mnemonicParsing="false" text="Repetir" />
+                  <MenuItem mnemonicParsing="false" text="Aleatório" />
+                  <MenuItem mnemonicParsing="false" text="Silêncio" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Ajuda">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Sobre" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label fx:id="labelAlbum" layoutX="258.0" layoutY="75.0" prefHeight="20.0" prefWidth="422.0" text="Album" textAlignment="CENTER" textFill="#6c7379">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="reproduzir" layoutX="33.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="37.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../img/logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="26.0" layoutY="121.0" text="Reproduzir">
+      <Label layoutX="26.0" layoutY="146.0" text="Reproduzir">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="44.0" layoutY="203.0" text="Parar">
+      <Label layoutX="44.0" layoutY="228.0" text="Parar">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="parar" layoutX="33.0" layoutY="157.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
-      <Button fx:id="anterior" layoutX="31.0" layoutY="316.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
-      <Label layoutX="34.0" layoutY="361.0" text="Anterior">
+      <Button fx:id="parar" layoutX="33.0" layoutY="182.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="anterior" layoutX="31.0" layoutY="341.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Label layoutX="34.0" layoutY="386.0" text="Anterior">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="34.0" layoutY="278.0" text="Próximo">
+      <Label layoutX="34.0" layoutY="303.0" text="Próximo">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="proximo" layoutX="33.0" layoutY="232.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
-      <Button fx:id="repetir" layoutX="31.0" layoutY="394.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
-      <Label layoutX="35.0" layoutY="440.0" text="Repetir">
+      <Button fx:id="proximo" layoutX="33.0" layoutY="257.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="repetir" layoutX="31.0" layoutY="419.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Label layoutX="35.0" layoutY="465.0" text="Repetir">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="29.0" layoutY="523.0" text="Aleatório">
+      <Label layoutX="29.0" layoutY="548.0" text="Aleatório">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="aleatorio" layoutX="31.0" layoutY="476.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
-      <Button fx:id="silencio" layoutX="31.0" layoutY="556.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
-      <Label layoutX="33.0" layoutY="601.0" text="Silêncio">
+      <Button fx:id="aleatorio" layoutX="31.0" layoutY="501.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="silencio" layoutX="31.0" layoutY="581.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Label layoutX="33.0" layoutY="626.0" text="Silêncio">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="abrirLink" layoutX="130.0" layoutY="19.0" onAction="#abrir" text="Abrir">
+      <Label layoutX="580.0" layoutY="616.0" text="Simple Media Player" textFill="#8c8a8a">
          <font>
-            <Font name="Arial" size="16.0" />
+            <Font name="System Bold" size="10.0" />
          </font>
-      </Hyperlink>
-      <Hyperlink layoutX="174.0" layoutY="19.0" onAction="#voltar" text="Voltar">
+      </Label>
+      <Label layoutX="615.0" layoutY="630.0" text="Versão - 0.0.1" textFill="#8c8a8a">
          <font>
-            <Font name="Arial" size="16.0" />
+            <Font size="10.0" />
          </font>
-      </Hyperlink>
-      <Label layoutX="552.0" layoutY="586.0" text="Simple Media Player">
+      </Label>
+      <Label fx:id="labelTitulo" layoutX="258.0" layoutY="46.0" prefHeight="20.0" prefWidth="422.0" text="Título" textAlignment="CENTER" textFill="#6c7379">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="611.0" layoutY="607.0" text="Versão - 0.0.1">
-         <font>
-            <Font size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelTitulo" layoutX="258.0" layoutY="76.0" prefHeight="20.0" prefWidth="422.0" text="Título" textAlignment="CENTER" textFill="#6c7379">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="imageViewAlbumImage" fitHeight="116.0" fitWidth="118.0" layoutX="130.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imageViewAlbumImage" fitHeight="116.0" fitWidth="118.0" layoutX="130.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../img/album2.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="labelAlbum" layoutX="258.0" layoutY="105.0" prefHeight="20.0" prefWidth="422.0" text="Album" textAlignment="CENTER" textFill="#6c7379">
+      <ProgressBar fx:id="progressBar" layoutX="258.0" layoutY="133.0" prefHeight="28.0" prefWidth="422.0" progress="0.0" />
+      <Label fx:id="labelDuracao" layoutX="258.0" layoutY="104.0" prefHeight="20.0" prefWidth="422.0" text="Duração" textAlignment="CENTER" textFill="#6c7379">
          <font>
-            <Font name="System Bold Italic" size="14.0" />
+            <Font size="14.0" />
          </font>
       </Label>
-      <ProgressBar fx:id="progressBar" layoutX="258.0" layoutY="163.0" prefHeight="28.0" prefWidth="422.0" progress="0.0" />
-      <Label fx:id="labelDuracao" layoutX="258.0" layoutY="134.0" prefHeight="20.0" prefWidth="422.0" text="Duração" textAlignment="CENTER" textFill="#6c7379">
-         <font>
-            <Font name="System Bold Italic" size="14.0" />
-         </font>
-      </Label>
-      <ListView fx:id="listView" layoutX="130.0" layoutY="211.0" prefHeight="356.0" prefWidth="548.0" />
-      <Separator layoutX="109.0" orientation="VERTICAL" prefHeight="630.0" prefWidth="6.0" />
-      <Label fx:id="lblMedia" alignment="CENTER" contentDisplay="TOP" layoutX="29.0" layoutY="45.0" prefHeight="17.0" prefWidth="57.0" text="MEDIA" textFill="#dd840f">
+      <ListView fx:id="listView" layoutX="130.0" layoutY="175.0" prefHeight="420.0" prefWidth="548.0" />
+      <Separator layoutX="107.0" layoutY="26.0" orientation="VERTICAL" prefHeight="631.0" prefWidth="8.0" />
+      <Label fx:id="lblMedia" alignment="CENTER" contentDisplay="TOP" layoutX="29.0" layoutY="67.0" prefHeight="17.0" prefWidth="57.0" text="MEDIA" textFill="#dd840f">
          <font>
             <Font size="10.0" />
          </font></Label>

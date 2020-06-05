@@ -2,6 +2,7 @@ package br.com.jhegner.smp.view;
 
 import java.io.IOException;
 
+import br.com.jhegner.smp.domain.Arquivo;
 import br.com.jhegner.smp.enums.EMedia;
 import br.com.jhegner.smp.enums.ETexto;
 import br.com.jhegner.smp.util.ResourceUtil;
@@ -10,7 +11,10 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
@@ -90,7 +94,32 @@ public class MainController extends AbstractController{
         
         configuraBotoes(scene, media);
         
+        configuraComponentes(scene);
+        
         stage.show();
+	}
+
+	@SuppressWarnings("unchecked")
+	private void configuraComponentes(Scene scene) {
+		
+		ImageView imageView = (ImageView) scene.lookup("#imageViewAlbumImage");
+		imageView.setVisible(Boolean.FALSE);
+		
+		Label labelMedia = (Label) scene.lookup("#labelTitulo");
+		labelMedia.setVisible(Boolean.FALSE);
+		
+		Label labelAlbum = (Label) scene.lookup("#labelAlbum");
+		labelAlbum.setVisible(Boolean.FALSE);
+		
+		Label labelDuracao = (Label) scene.lookup("#labelDuracao");
+		labelDuracao.setVisible(Boolean.FALSE);
+		
+		ProgressBar progressBar = (ProgressBar) scene.lookup("#progressBar");
+		progressBar.setVisible(Boolean.FALSE);
+		
+		ListView<Arquivo> listView = (ListView<Arquivo>) scene.lookup("#listView");
+		listView.setVisible(Boolean.FALSE);
+		
 	}
 
 	@Override

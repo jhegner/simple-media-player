@@ -9,12 +9,16 @@ import br.com.jhegner.smp.domain.ArquivoAudio;
 import br.com.jhegner.smp.domain.LeitorMetadadoArquivoAudio;
 import br.com.jhegner.smp.enums.EMedia;
 import br.com.jhegner.smp.listener.ListViewReproducaoChangeListener;
+import br.com.jhegner.smp.view.helper.MediaPlayerViewHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Hyperlink;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import lombok.NoArgsConstructor;
@@ -35,9 +39,6 @@ public class MediaPlayerController extends AbstractController {
 	private List<Arquivo> arquivos;
 
 	@FXML
-	private Hyperlink abrirLink;
-
-	@FXML
 	private ListView<Arquivo> listView;
 
 	@FXML
@@ -51,12 +52,37 @@ public class MediaPlayerController extends AbstractController {
 
 		log.debug("Abrindo caixa de selecao de arquivo");
 
-		Stage stage = (Stage) abrirLink.getScene().getWindow();
+		Stage stage = (Stage) listView.getScene().getWindow();
 
 		FileChooser fileChooser = configuraFileChooser(stage);
 		this.files = fileChooser.showOpenMultipleDialog(stage);
 
 		leArquivos(this.files);
+		
+		configuraComponentes(listView.getScene());
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void configuraComponentes(Scene scene) {
+		
+		ImageView imageView = (ImageView) scene.lookup("#imageViewAlbumImage");
+		imageView.setVisible(Boolean.TRUE);
+		
+		Label labelMedia = (Label) scene.lookup("#labelTitulo");
+		labelMedia.setVisible(Boolean.TRUE);
+		
+		Label labelAlbum = (Label) scene.lookup("#labelAlbum");
+		labelAlbum.setVisible(Boolean.TRUE);
+		
+		Label labelDuracao = (Label) scene.lookup("#labelDuracao");
+		labelDuracao.setVisible(Boolean.TRUE);
+		
+		ProgressBar progressBar = (ProgressBar) scene.lookup("#progressBar");
+		progressBar.setVisible(Boolean.TRUE);
+		
+		ListView<Arquivo> listView = (ListView<Arquivo>) scene.lookup("#listView");
+		listView.setVisible(Boolean.TRUE);
+		
 	}
 
 	private void leArquivos(List<File> files) {
@@ -69,7 +95,7 @@ public class MediaPlayerController extends AbstractController {
 
 	private void configuraListView() {
 		this.listView.getSelectionModel().selectedItemProperty()
-				.addListener(new ListViewReproducaoChangeListener(this.abrirLink.getScene()));
+				.addListener(new ListViewReproducaoChangeListener(this.listView.getScene()));
 	}
 
 	private void preencheListView(List<File> files) {
@@ -90,8 +116,16 @@ public class MediaPlayerController extends AbstractController {
 			this.arquivos.add(arquivo);
 		}
 
+		this.listView.setItems(null); 
+		
 		ObservableList<Arquivo> obsList = FXCollections.observableArrayList(this.arquivos);
 		this.listView.setItems(obsList);
+		
+		this.listView.getSelectionModel().select(0);
+		this.listView.scrollTo(0);
+		
+		MediaPlayerViewHelper helper = new MediaPlayerViewHelper();
+		helper.exibeMetadadosMedia(this.arquivos.get(0), this.listView.getScene());
 	}
 
 	private FileChooser configuraFileChooser(final Stage stage) {
