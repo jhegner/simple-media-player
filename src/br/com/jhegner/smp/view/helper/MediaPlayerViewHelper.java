@@ -6,10 +6,12 @@ import java.io.InputStream;
 
 import br.com.jhegner.smp.domain.Arquivo;
 import br.com.jhegner.smp.domain.ArquivoAudio;
+import br.com.jhegner.smp.domain.ArquivoVideo;
 import br.com.jhegner.smp.enums.EBotao;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +19,18 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MediaPlayerViewHelper {
 
-	public void exibeMetadadosMedia(Arquivo arquivo, Scene scene) {
+	private Arquivo arquivo;
+	
+	public MediaPlayerViewHelper() {
+		super();
+	}
+
+	public MediaPlayerViewHelper(Arquivo arquivo) {
+		this();
+		this.arquivo = arquivo;
+	}
+
+	public void exibeMetadadosMedia(Scene scene) {
 
 		if (arquivo instanceof ArquivoAudio) {
 
@@ -89,6 +102,21 @@ public class MediaPlayerViewHelper {
 		labelPausar.setVisible(Boolean.TRUE);
 	}
 
+	public void configuraBotoesParar(Scene scene) {
+		
+		configuraBotoesPausarParar(scene);
+		
+		final Label labelDuracao = (Label) scene.lookup("#labelDuracao");
+		if(this.arquivo instanceof ArquivoAudio) {
+			labelDuracao.setText(((ArquivoAudio)arquivo).getDuracao());
+		} else if(this.arquivo instanceof ArquivoVideo) {
+			labelDuracao.setText(((ArquivoVideo)arquivo).getDuracao());
+		}
+		
+		final Slider sliderReproducao = (Slider) scene.lookup("#sliderProgress");
+		sliderReproducao.setValue(0.0);
+	}
+	
 	public void configuraBotoesPausarParar(Scene scene) {
 
 		final ButtonBase btnReproduzir = (ButtonBase) scene.lookup(EBotao.REPRODUZIR.getId());
@@ -113,6 +141,11 @@ public class MediaPlayerViewHelper {
 			btnSilencio
 					.setGraphic(new ImageView(new Image(getClass().getResourceAsStream(EBotao.SILENCIO.getImgPath()))));
 		}
+	}
+
+	public void atualizarTempoExecucaoMidia(Scene scene, String duracao) {
+		final Label labelDuracao = (Label) scene.lookup("#labelDuracao");
+		labelDuracao.setText(duracao);
 	}
 
 }

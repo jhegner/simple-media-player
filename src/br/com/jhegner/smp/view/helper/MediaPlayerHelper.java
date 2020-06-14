@@ -3,19 +3,28 @@ package br.com.jhegner.smp.view.helper;
 import java.io.File;
 
 import br.com.jhegner.smp.domain.Arquivo;
+import br.com.jhegner.smp.listener.MediaEmReproducaoChangeListener;
+import javafx.scene.Scene;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 public class MediaPlayerHelper {
 
 	private MediaPlayer mp;
-
 	private static MediaPlayerHelper instance;
+	private MediaPlayerViewHelper mpvh;
+	
+	public static final double MIN_SOUND_VOLUME = 0.0;
+	public static final double MAX_SOUND_VOLUME = 1.0;
 
 	private Arquivo arquivo;
+	
+	private Scene scene;
 
-	private MediaPlayerHelper(Arquivo arquivo) {
+	private MediaPlayerHelper(Arquivo arquivo, Scene scene) {
 		this.arquivo = arquivo;
+		this.scene = scene;
+		this.mpvh = new MediaPlayerViewHelper(arquivo);
 	}
 
 	public void play() {
@@ -30,10 +39,13 @@ public class MediaPlayerHelper {
 						mp.stop();
 						mp.dispose();
 						mp = null;
+						resetarConfigurarInfoReproducao();
 					}
 				}
 			});
-
+			
+			MediaEmReproducaoChangeListener mcl = new MediaEmReproducaoChangeListener(mp, scene);
+			mp.currentTimeProperty().addListener(mcl.currentTimeListener());
 		}
 		mp.play();
 	}
@@ -43,7 +55,12 @@ public class MediaPlayerHelper {
 			mp.stop();
 			mp.dispose();
 			mp = null;
+			resetarConfigurarInfoReproducao();
 		}
+	}
+
+	private void resetarConfigurarInfoReproducao() {
+		mpvh.configuraBotoesParar(scene);
 	}
 
 	public void pause() {
@@ -71,9 +88,9 @@ public class MediaPlayerHelper {
 		return instance;
 	}
 
-	public static MediaPlayerHelper getInstance(Arquivo arquivo) {
+	public static MediaPlayerHelper getInstance(Arquivo arquivo, Scene scene) {
 		if (instance == null) {
-			instance = new MediaPlayerHelper(arquivo);
+			instance = new MediaPlayerHelper(arquivo, scene);
 		}
 		return instance;
 	}

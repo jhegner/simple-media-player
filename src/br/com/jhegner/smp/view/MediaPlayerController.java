@@ -63,7 +63,6 @@ public class MediaPlayerController extends AbstractController {
 			leArquivos(this.files);
 	
 			configuraComponentes(listView.getScene());
-		
 		}
 	}
 
@@ -76,7 +75,7 @@ public class MediaPlayerController extends AbstractController {
 
 			log.debug("Reproduzindo a media");
 
-			MediaPlayerHelper mdh = MediaPlayerHelper.getInstance(arquivo);
+			MediaPlayerHelper mdh = MediaPlayerHelper.getInstance(arquivo, this.listView.getScene());
 			mdh.play();
 
 			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
@@ -111,8 +110,8 @@ public class MediaPlayerController extends AbstractController {
 
 			MediaPlayerHelper.getInstance().stop();
 
-			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
-			mpvh.configuraBotoesPausarParar(this.listView.getScene());
+			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper(arquivo);
+			mpvh.configuraBotoesParar(this.listView.getScene());
 
 		}
 	}
@@ -196,8 +195,8 @@ public class MediaPlayerController extends AbstractController {
 		this.listView.getSelectionModel().select(0);
 		this.listView.scrollTo(0);
 
-		MediaPlayerViewHelper helper = new MediaPlayerViewHelper();
-		helper.exibeMetadadosMedia(this.arquivos.get(0), this.listView.getScene());
+		MediaPlayerViewHelper helper = new MediaPlayerViewHelper(this.arquivos.get(0));
+		helper.exibeMetadadosMedia(this.listView.getScene());
 	}
 
 	private FileChooser configuraFileChooser(final Stage stage) {

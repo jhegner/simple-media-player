@@ -129,7 +129,7 @@
          <font>
             <Font size="10.0" />
          </font></Label>
-      <Slider fx:id="sliderProgress" layoutX="258.0" layoutY="139.0" prefHeight="14.0" prefWidth="422.0">
+      <Slider fx:id="sliderProgress" blockIncrement="0.1" layoutX="258.0" layoutY="139.0" max="0.0" prefHeight="14.0" prefWidth="422.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

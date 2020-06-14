@@ -23,8 +23,8 @@ public class ListViewReproducaoChangeListener implements ChangeListener<Arquivo>
 	@Override
 	public void changed(ObservableValue<? extends Arquivo> observable, Arquivo oldValue, Arquivo newValue) {
 		
-		MediaPlayerViewHelper helper = new MediaPlayerViewHelper();
-		helper.exibeMetadadosMedia(newValue, scene);
+		MediaPlayerViewHelper helper = new MediaPlayerViewHelper(newValue);
+		helper.exibeMetadadosMedia(scene);
 		
 	}
 
