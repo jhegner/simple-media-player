@@ -6,7 +6,9 @@ import java.io.InputStream;
 
 import br.com.jhegner.smp.domain.Arquivo;
 import br.com.jhegner.smp.domain.ArquivoAudio;
+import br.com.jhegner.smp.enums.EBotao;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -44,8 +46,8 @@ public class MediaPlayerViewHelper {
 				} catch (IOException e) {
 					log.error(e.getMessage());
 				}
-
-			} else {
+			}
+			else {
 				ivAudio.setImage(null);
 			}
 		}
@@ -73,6 +75,32 @@ public class MediaPlayerViewHelper {
 		
 		final Label labelDuracao = (Label) scene.lookup("#labelDuracao");
 		labelDuracao.setVisible(Boolean.TRUE);
+	}
+	
+	public void configuraBotoesReproducao(Scene scene) {
+		
+		final ButtonBase btnReproduzir = (ButtonBase) scene.lookup(EBotao.REPRODUZIR.getId());
+		final Label labelReproduzir = (Label) scene.lookup("#labelReproduzir");
+		btnReproduzir.setVisible(Boolean.FALSE);
+		labelReproduzir.setVisible(Boolean.FALSE);
+		
+		final ButtonBase btnPausar = (ButtonBase) scene.lookup(EBotao.PAUSAR.getId());
+		final Label labelPausar = (Label) scene.lookup("#labelPausar");
+		btnPausar.setVisible(Boolean.TRUE);
+		labelPausar.setVisible(Boolean.TRUE);
+	}
+	
+	public void configuraBotoesPausarParar(Scene scene) {
+		
+		final ButtonBase btnReproduzir = (ButtonBase) scene.lookup(EBotao.REPRODUZIR.getId());
+		final Label labelReproduzir = (Label) scene.lookup("#labelReproduzir");
+		btnReproduzir.setVisible(Boolean.TRUE);
+		labelReproduzir.setVisible(Boolean.TRUE);
+		
+		final ButtonBase btnPausar = (ButtonBase) scene.lookup(EBotao.PAUSAR.getId());
+		final Label labelPausar = (Label) scene.lookup("#labelPausar");
+		btnPausar.setVisible(Boolean.FALSE);
+		labelPausar.setVisible(Boolean.FALSE);
 	}
 
 }

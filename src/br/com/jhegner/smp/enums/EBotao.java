@@ -5,13 +5,14 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public enum EBotao {
 	
-	PLAY("#reproduzir", "Reproduzir", "/img/play-32.png"),
-	STOP("#parar", "Parar", "/img/stop-32.png"),
-	PROXIMO("#proximo", "Proximo", "/img/media-skip-forward-32.png"),
-	ANTERIOR("#anterior", "Anterior", "/img/media-skip-backward-32.png"),
-	REPETIR("#repetir", "Repetir", "/img/recurring-appointment-32.png"),
-	ALEATORIO("#aleatorio", "Aleatorio", "/img/random-32.png"),
-	SILENCIO("#silencio", "Silencio", "/img/mute-3-32.png");
+	REPRODUZIR("#reproduzir", "Reproduzir", "/img/play-16.png"),
+	PAUSAR("#pausar", "Pausar", "/img/pause-16.png"),
+	PARAR("#parar", "Parar", "/img/stop-16.png"),
+	PROXIMO("#proximo", "Proximo", "/img/media-skip-forward-16.png"),
+	ANTERIOR("#anterior", "Anterior", "/img/media-skip-backward-16.png"),
+	REPETIR("#repetir", "Repetir", "/img/recurring-appointment-16.png"),
+	ALEATORIO("#aleatorio", "Aleatorio", "/img/random-16.png"),
+	SILENCIO("#silencio", "Silencio", "/img/mute-3-16.png");
 
 	private String id;
 	private String tooltip;

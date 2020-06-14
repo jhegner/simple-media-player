@@ -29,7 +29,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App extends Application {
 
-	private static boolean exibirSplash = Boolean.TRUE;
+	private static boolean exibirSplash = Boolean.FALSE;
 
 	@Override
 	public void start(final Stage stage) {

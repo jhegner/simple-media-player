@@ -43,13 +43,19 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="reproduzir" layoutX="33.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="reproduzir" layoutX="33.0" layoutY="100.0" mnemonicParsing="false" onAction="#reproduzir" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="pausar" layoutX="33.0" layoutY="100.0" mnemonicParsing="false" onAction="#pausar" prefHeight="40.0" prefWidth="52.0" visible="false" />
       <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="37.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../img/logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="26.0" layoutY="146.0" text="Reproduzir">
+      <Label fx:id="labelReproduzir" layoutX="26.0" layoutY="146.0" text="Reproduzir" visible="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="labelPausar" layoutX="39.0" layoutY="146.0" text="Pausar" visible="false">
          <font>
             <Font size="14.0" />
          </font>
@@ -59,7 +65,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="parar" layoutX="33.0" layoutY="182.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="parar" layoutX="33.0" layoutY="182.0" mnemonicParsing="false" onAction="#parar" prefHeight="40.0" prefWidth="52.0" />
       <Button fx:id="anterior" layoutX="31.0" layoutY="341.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
       <Label layoutX="34.0" layoutY="386.0" text="Anterior">
          <font>

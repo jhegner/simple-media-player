@@ -7,14 +7,17 @@ import java.util.List;
 import br.com.jhegner.smp.domain.Arquivo;
 import br.com.jhegner.smp.domain.ArquivoAudio;
 import br.com.jhegner.smp.domain.LeitorMetadadoArquivoAudio;
+import br.com.jhegner.smp.enums.EBotao;
 import br.com.jhegner.smp.enums.EMedia;
 import br.com.jhegner.smp.listener.ListViewReproducaoChangeListener;
+import br.com.jhegner.smp.view.helper.MediaPlayerHelper;
 import br.com.jhegner.smp.view.helper.MediaPlayerViewHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
@@ -65,9 +68,51 @@ public class MediaPlayerController extends AbstractController {
 	@FXML
 	protected void reproduzir(ActionEvent event) {
 		
-		log.debug("Reproduzindo a media");
+		Arquivo arquivo = listView.getSelectionModel().getSelectedItem();
 		
+		if(null != arquivo) {
+			
+			log.debug("Reproduzindo a media");
+			
+			MediaPlayerHelper mdh = MediaPlayerHelper.getInstance(arquivo);
+			mdh.play();
+			
+			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
+			mpvh.configuraBotoesReproducao(this.listView.getScene());
+		}
+	}
+	
+	@FXML
+	protected void pausar(ActionEvent event) {
 		
+		Arquivo arquivo = listView.getSelectionModel().getSelectedItem();
+		
+		if(null != arquivo) {
+			
+			log.debug("Pausando a media");
+			
+			 MediaPlayerHelper.getInstance().pause();
+			 
+				MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
+				mpvh.configuraBotoesPausarParar(this.listView.getScene());
+		}
+	}
+	
+	@FXML
+	protected void parar(ActionEvent event) {
+		
+		Arquivo arquivo = listView.getSelectionModel().getSelectedItem();
+		
+		if(null != arquivo) {
+			
+			log.debug("Parando a media");
+			
+			MediaPlayerHelper.getInstance().stop();
+			
+			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
+			mpvh.configuraBotoesPausarParar(this.listView.getScene());
+			
+		}
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -174,7 +219,7 @@ public class MediaPlayerController extends AbstractController {
 		}
 
 	}
-
+	
 	@Override
 	void goMainView(ActionEvent currentEvent) {
 
