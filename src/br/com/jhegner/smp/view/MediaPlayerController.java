@@ -18,7 +18,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -57,10 +57,14 @@ public class MediaPlayerController extends AbstractController {
 
 		FileChooser fileChooser = configuraFileChooser(stage);
 		this.files = fileChooser.showOpenMultipleDialog(stage);
+		
+		if(null != this.files && files.size() > 0) {
 
-		leArquivos(this.files);
-
-		configuraComponentes(listView.getScene());
+			leArquivos(this.files);
+	
+			configuraComponentes(listView.getScene());
+		
+		}
 	}
 
 	@FXML
@@ -112,6 +116,23 @@ public class MediaPlayerController extends AbstractController {
 
 		}
 	}
+	
+	@FXML
+	protected void silencio(ActionEvent event) {
+
+		Arquivo arquivo = listView.getSelectionModel().getSelectedItem();
+
+		if (null != arquivo) {
+
+			log.debug("Silenciando a media");
+
+			MediaPlayerHelper.getInstance().muteOrRemoveMute();
+			
+			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
+			mpvh.configuraBotaoSilencio(this.listView.getScene(), MediaPlayerHelper.getInstance().isMute());
+			
+		}
+	}
 
 	@SuppressWarnings("unchecked")
 	private void configuraComponentes(Scene scene) {
@@ -127,9 +148,9 @@ public class MediaPlayerController extends AbstractController {
 
 		Label labelDuracao = (Label) scene.lookup("#labelDuracao");
 		labelDuracao.setVisible(Boolean.TRUE);
-
-		ProgressBar progressBar = (ProgressBar) scene.lookup("#progressBar");
-		progressBar.setVisible(Boolean.TRUE);
+		
+		Slider slider = (Slider) scene.lookup("#sliderProgress");
+		slider.setVisible(Boolean.TRUE);
 
 		ListView<Arquivo> listView = (ListView<Arquivo>) scene.lookup("#listView");
 		listView.setVisible(Boolean.TRUE);

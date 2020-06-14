@@ -29,19 +29,25 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App extends Application {
 
-	private static boolean exibirSplash = Boolean.TRUE;
+	private static boolean exibirSplash;
+
+	static {
+		exibirSplash = System.getenv("exibirSplash") != null
+				? Boolean.parseBoolean(System.getenv("exibirSplash"))
+				: Boolean.TRUE;
+	}
 
 	@Override
 	public void start(final Stage stage) {
-		
+
 		log.info("Iniciando o Simple Media Player");
 
 		try {
-			
+
 			final Stage splashStage = new Stage();
 
 			if (exibirSplash) {
-				
+
 				log.debug("Preparando Splash para exibicao");
 
 				// splash (tela boas vindas)
@@ -49,7 +55,7 @@ public class App extends Application {
 
 				Scene scene = new Scene(splash);
 				scene.setCursor(Cursor.WAIT);
-				
+
 				splashStage.setScene(scene);
 				splashStage.centerOnScreen();
 				splashStage.initStyle(StageStyle.UNDECORATED);
@@ -73,10 +79,10 @@ public class App extends Application {
 			configuraBotoes(scene);
 
 			if (exibirSplash) {
-				
+
 				log.debug("Configurando tempo de exibicao da janela Splash");
 				log.debug("Duracao de 3000 millisecond");
-				
+
 				// transicao do splash
 				PauseTransition ps = new PauseTransition(new Duration(3000));
 				ps.setOnFinished(new EventHandler<ActionEvent>() {
@@ -97,14 +103,14 @@ public class App extends Application {
 			} else {
 				stage.show();
 			}
-			
+
 		} catch (IOException e) {
 			log.error("Erro ao abrir arquivo fxml", e);
 		}
 	}
 
 	private void configuraBotoes(Scene scene) {
-		
+
 		log.debug("Configurando botoes da tela principal");
 
 		// conf

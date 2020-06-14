@@ -16,22 +16,22 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class MediaPlayerViewHelper {
-	
+
 	public void exibeMetadadosMedia(Arquivo arquivo, Scene scene) {
-		
-		if(arquivo instanceof ArquivoAudio) {
-			
+
+		if (arquivo instanceof ArquivoAudio) {
+
 			ArquivoAudio arquivoAudio = (ArquivoAudio) arquivo;
-		
+
 			final Label labelTitulo = (Label) scene.lookup("#labelTitulo");
 			labelTitulo.setText(arquivoAudio.getTitulo());
-	
+
 			final Label labelAlbum = (Label) scene.lookup("#labelAlbum");
 			labelAlbum.setText(arquivoAudio.getAlbum());
-	
+
 			final Label labelDuracao = (Label) scene.lookup("#labelDuracao");
 			labelDuracao.setText(arquivoAudio.getDuracao());
-			
+
 			final ImageView ivAudio = (ImageView) scene.lookup("#imageViewAlbumImage");
 
 			if (arquivoAudio.getImageAlbumByte() != null && arquivoAudio.getImageAlbumByte().length > 0) {
@@ -40,21 +40,20 @@ public class MediaPlayerViewHelper {
 				Image imageAudio = new Image(is);
 
 				ivAudio.setImage(imageAudio);
-				
+
 				try {
 					is.close();
 				} catch (IOException e) {
 					log.error(e.getMessage());
 				}
-			}
-			else {
+			} else {
 				ivAudio.setImage(null);
 			}
 		}
 	}
-	
+
 	public void ocultaLabelsInfoMediaPlayer(Scene scene) {
-		
+
 		final Label labelTitulo = (Label) scene.lookup("#labelTitulo");
 		labelTitulo.setVisible(Boolean.FALSE);
 
@@ -64,43 +63,56 @@ public class MediaPlayerViewHelper {
 		final Label labelDuracao = (Label) scene.lookup("#labelDuracao");
 		labelDuracao.setVisible(Boolean.FALSE);
 	}
-	
+
 	public void exibeLabelsInfoMediaPlayer(Scene scene) {
-		
+
 		final Label labelTitulo = (Label) scene.lookup("#labelTitulo");
 		labelTitulo.setVisible(Boolean.TRUE);
-		
+
 		final Label labelAlbum = (Label) scene.lookup("#labelAlbum");
 		labelAlbum.setVisible(Boolean.TRUE);
-		
+
 		final Label labelDuracao = (Label) scene.lookup("#labelDuracao");
 		labelDuracao.setVisible(Boolean.TRUE);
 	}
-	
+
 	public void configuraBotoesReproducao(Scene scene) {
-		
+
 		final ButtonBase btnReproduzir = (ButtonBase) scene.lookup(EBotao.REPRODUZIR.getId());
 		final Label labelReproduzir = (Label) scene.lookup("#labelReproduzir");
 		btnReproduzir.setVisible(Boolean.FALSE);
 		labelReproduzir.setVisible(Boolean.FALSE);
-		
+
 		final ButtonBase btnPausar = (ButtonBase) scene.lookup(EBotao.PAUSAR.getId());
 		final Label labelPausar = (Label) scene.lookup("#labelPausar");
 		btnPausar.setVisible(Boolean.TRUE);
 		labelPausar.setVisible(Boolean.TRUE);
 	}
-	
+
 	public void configuraBotoesPausarParar(Scene scene) {
-		
+
 		final ButtonBase btnReproduzir = (ButtonBase) scene.lookup(EBotao.REPRODUZIR.getId());
 		final Label labelReproduzir = (Label) scene.lookup("#labelReproduzir");
 		btnReproduzir.setVisible(Boolean.TRUE);
 		labelReproduzir.setVisible(Boolean.TRUE);
-		
+
 		final ButtonBase btnPausar = (ButtonBase) scene.lookup(EBotao.PAUSAR.getId());
 		final Label labelPausar = (Label) scene.lookup("#labelPausar");
 		btnPausar.setVisible(Boolean.FALSE);
 		labelPausar.setVisible(Boolean.FALSE);
+	}
+
+	public void configuraBotaoSilencio(Scene scene, Boolean isMute) {
+
+		final ButtonBase btnSilencio = (ButtonBase) scene.lookup(EBotao.SILENCIO.getId());
+
+		if (isMute) {
+			String imgPath = "/img/mute-3-16_on.png";
+			btnSilencio.setGraphic(new ImageView(new Image(getClass().getResourceAsStream(imgPath))));
+		} else {
+			btnSilencio
+					.setGraphic(new ImageView(new Image(getClass().getResourceAsStream(EBotao.SILENCIO.getImgPath()))));
+		}
 	}
 
 }

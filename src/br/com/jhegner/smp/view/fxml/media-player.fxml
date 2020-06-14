@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
@@ -90,7 +92,7 @@
          </font>
       </Label>
       <Button fx:id="aleatorio" layoutX="31.0" layoutY="501.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
-      <Button fx:id="silencio" layoutX="31.0" layoutY="581.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
+      <Button fx:id="silencio" layoutX="31.0" layoutY="581.0" mnemonicParsing="false" onAction="#silencio" prefHeight="40.0" prefWidth="52.0" />
       <Label layoutX="33.0" layoutY="626.0" text="Silêncio">
          <font>
             <Font size="14.0" />
@@ -116,7 +118,6 @@
             <Image url="@../../../../../../img/album2.jpg" />
          </image>
       </ImageView>
-      <ProgressBar fx:id="progressBar" layoutX="258.0" layoutY="133.0" prefHeight="28.0" prefWidth="422.0" progress="0.0" />
       <Label fx:id="labelDuracao" layoutX="258.0" layoutY="104.0" prefHeight="20.0" prefWidth="422.0" text="Duração" textAlignment="CENTER" textFill="#6c7379">
          <font>
             <Font size="14.0" />
@@ -128,5 +129,10 @@
          <font>
             <Font size="10.0" />
          </font></Label>
+      <Slider fx:id="sliderProgress" layoutX="258.0" layoutY="139.0" prefHeight="14.0" prefWidth="422.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Slider>
    </children>
 </AnchorPane>

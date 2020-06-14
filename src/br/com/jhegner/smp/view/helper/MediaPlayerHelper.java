@@ -26,7 +26,7 @@ public class MediaPlayerHelper {
 			mp.setOnEndOfMedia(new Runnable() {
 				@Override
 				public void run() {
-					if (mp != null) {
+					if (mpIstNotNull()) {
 						mp.stop();
 						mp.dispose();
 						mp = null;
@@ -39,7 +39,7 @@ public class MediaPlayerHelper {
 	}
 
 	public void stop() {
-		if (mp != null) {
+		if (mpIstNotNull()) {
 			mp.stop();
 			mp.dispose();
 			mp = null;
@@ -47,9 +47,24 @@ public class MediaPlayerHelper {
 	}
 
 	public void pause() {
-		if (mp != null) {
+		if (mpIstNotNull()) {
 			mp.pause();
 		}
+	}
+	
+	public void muteOrRemoveMute() {
+		Boolean bool = mp.isMute() ? Boolean.FALSE : Boolean.TRUE;
+		if (mpIstNotNull()) {
+			mp.setMute(bool);
+		}
+	}
+	
+	public boolean isMute() {
+		return mp.isMute();
+	}
+	
+	private boolean mpIstNotNull() {
+		return (mp != null);
 	}
 
 	public static MediaPlayerHelper getInstance() {

@@ -12,7 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -114,8 +114,8 @@ public class MainController extends AbstractController{
 		Label labelDuracao = (Label) scene.lookup("#labelDuracao");
 		labelDuracao.setVisible(Boolean.FALSE);
 		
-		ProgressBar progressBar = (ProgressBar) scene.lookup("#progressBar");
-		progressBar.setVisible(Boolean.FALSE);
+		Slider slider = (Slider) scene.lookup("#sliderProgress");
+		slider.setVisible(Boolean.FALSE);
 		
 		ListView<Arquivo> listView = (ListView<Arquivo>) scene.lookup("#listView");
 		listView.setVisible(Boolean.FALSE);
