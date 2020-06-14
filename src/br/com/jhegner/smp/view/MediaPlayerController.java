@@ -7,7 +7,6 @@ import java.util.List;
 import br.com.jhegner.smp.domain.Arquivo;
 import br.com.jhegner.smp.domain.ArquivoAudio;
 import br.com.jhegner.smp.domain.LeitorMetadadoArquivoAudio;
-import br.com.jhegner.smp.enums.EBotao;
 import br.com.jhegner.smp.enums.EMedia;
 import br.com.jhegner.smp.listener.ListViewReproducaoChangeListener;
 import br.com.jhegner.smp.view.helper.MediaPlayerHelper;
@@ -17,7 +16,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
@@ -61,81 +59,81 @@ public class MediaPlayerController extends AbstractController {
 		this.files = fileChooser.showOpenMultipleDialog(stage);
 
 		leArquivos(this.files);
-		
+
 		configuraComponentes(listView.getScene());
 	}
-	
+
 	@FXML
 	protected void reproduzir(ActionEvent event) {
-		
+
 		Arquivo arquivo = listView.getSelectionModel().getSelectedItem();
-		
-		if(null != arquivo) {
-			
+
+		if (null != arquivo) {
+
 			log.debug("Reproduzindo a media");
-			
+
 			MediaPlayerHelper mdh = MediaPlayerHelper.getInstance(arquivo);
 			mdh.play();
-			
+
 			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
 			mpvh.configuraBotoesReproducao(this.listView.getScene());
 		}
 	}
-	
+
 	@FXML
 	protected void pausar(ActionEvent event) {
-		
+
 		Arquivo arquivo = listView.getSelectionModel().getSelectedItem();
-		
-		if(null != arquivo) {
-			
+
+		if (null != arquivo) {
+
 			log.debug("Pausando a media");
-			
-			 MediaPlayerHelper.getInstance().pause();
-			 
-				MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
-				mpvh.configuraBotoesPausarParar(this.listView.getScene());
-		}
-	}
-	
-	@FXML
-	protected void parar(ActionEvent event) {
-		
-		Arquivo arquivo = listView.getSelectionModel().getSelectedItem();
-		
-		if(null != arquivo) {
-			
-			log.debug("Parando a media");
-			
-			MediaPlayerHelper.getInstance().stop();
-			
+
+			MediaPlayerHelper.getInstance().pause();
+
 			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
 			mpvh.configuraBotoesPausarParar(this.listView.getScene());
-			
 		}
 	}
-	
+
+	@FXML
+	protected void parar(ActionEvent event) {
+
+		Arquivo arquivo = listView.getSelectionModel().getSelectedItem();
+
+		if (null != arquivo) {
+
+			log.debug("Parando a media");
+
+			MediaPlayerHelper.getInstance().stop();
+
+			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
+			mpvh.configuraBotoesPausarParar(this.listView.getScene());
+
+		}
+	}
+
 	@SuppressWarnings("unchecked")
 	private void configuraComponentes(Scene scene) {
-		
+
 		ImageView imageView = (ImageView) scene.lookup("#imageViewAlbumImage");
 		imageView.setVisible(Boolean.TRUE);
-		
+
 		Label labelMedia = (Label) scene.lookup("#labelTitulo");
 		labelMedia.setVisible(Boolean.TRUE);
-		
+
 		Label labelAlbum = (Label) scene.lookup("#labelAlbum");
 		labelAlbum.setVisible(Boolean.TRUE);
-		
+
 		Label labelDuracao = (Label) scene.lookup("#labelDuracao");
 		labelDuracao.setVisible(Boolean.TRUE);
-		
+
 		ProgressBar progressBar = (ProgressBar) scene.lookup("#progressBar");
 		progressBar.setVisible(Boolean.TRUE);
-		
+
 		ListView<Arquivo> listView = (ListView<Arquivo>) scene.lookup("#listView");
 		listView.setVisible(Boolean.TRUE);
-		
+
 	}
 
 	private void leArquivos(List<File> files) {
@@ -169,14 +167,14 @@ public class MediaPlayerController extends AbstractController {
 			this.arquivos.add(arquivo);
 		}
 
-		this.listView.setItems(null); 
-		
+		this.listView.setItems(null);
+
 		ObservableList<Arquivo> obsList = FXCollections.observableArrayList(this.arquivos);
 		this.listView.setItems(obsList);
-		
+
 		this.listView.getSelectionModel().select(0);
 		this.listView.scrollTo(0);
-		
+
 		MediaPlayerViewHelper helper = new MediaPlayerViewHelper();
 		helper.exibeMetadadosMedia(this.arquivos.get(0), this.listView.getScene());
 	}
@@ -219,7 +217,7 @@ public class MediaPlayerController extends AbstractController {
 		}
 
 	}
-	
+
 	@Override
 	void goMainView(ActionEvent currentEvent) {
 

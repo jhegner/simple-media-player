@@ -13,7 +13,7 @@
       </Text>
       <Text layoutX="141.0" layoutY="175.0" strokeType="INSIDE" strokeWidth="0.0" text="Play music, picture and video. Made with ♥ on JavaFX." textAlignment="CENTER" wrappingWidth="433.33935546875">
          <font>
-            <Font name="Barlow Regular" size="16.0" />
+            <Font size="13.0" />
          </font>
       </Text>
    </children>
