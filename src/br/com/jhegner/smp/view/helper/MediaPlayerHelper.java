@@ -55,6 +55,7 @@ public class MediaPlayerHelper {
 			mp.stop();
 			mp.dispose();
 			mp = null;
+			instance.arquivo = null;
 			resetarConfigurarInfoReproducao();
 		}
 	}
@@ -89,7 +90,7 @@ public class MediaPlayerHelper {
 	}
 
 	public static MediaPlayerHelper getInstance(Arquivo arquivo, Scene scene) {
-		if (instance == null) {
+		if (instance == null || instance.arquivo != null) {
 			instance = new MediaPlayerHelper(arquivo, scene);
 		}
 		return instance;

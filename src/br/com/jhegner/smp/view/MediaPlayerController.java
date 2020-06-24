@@ -57,11 +57,11 @@ public class MediaPlayerController extends AbstractController {
 
 		FileChooser fileChooser = configuraFileChooser(stage);
 		this.files = fileChooser.showOpenMultipleDialog(stage);
-		
-		if(null != this.files && files.size() > 0) {
+
+		if (null != this.files && files.size() > 0) {
 
 			leArquivos(this.files);
-	
+
 			configuraComponentes(listView.getScene());
 		}
 	}
@@ -115,7 +115,7 @@ public class MediaPlayerController extends AbstractController {
 
 		}
 	}
-	
+
 	@FXML
 	protected void silencio(ActionEvent event) {
 
@@ -126,10 +126,62 @@ public class MediaPlayerController extends AbstractController {
 			log.debug("Silenciando a media");
 
 			MediaPlayerHelper.getInstance().muteOrRemoveMute();
-			
+
 			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
 			mpvh.configuraBotaoSilencio(this.listView.getScene(), MediaPlayerHelper.getInstance().isMute());
+
+		}
+	}
+
+	@FXML
+	protected void proximo(ActionEvent event) {
+
+		if (listView.getSelectionModel() != null && listView.getSelectionModel().getSelectedIndices() != null
+				&& listView.itemsProperty().getValue().size() != 1
+				&& listView.getSelectionModel().getSelectedIndex() < listView.itemsProperty().getValue().size()) {
 			
+			if(null != MediaPlayerHelper.getInstance()) {
+				parar(event);
+			}
+			
+			listView.getSelectionModel().selectNext();
+			
+			Arquivo arquivo = listView.getSelectionModel().getSelectedItem();
+
+			if (null != arquivo) {
+
+				log.debug("Reproduzindo a media");
+
+				MediaPlayerHelper mdh = MediaPlayerHelper.getInstance(arquivo, this.listView.getScene());
+				mdh.play();
+
+				MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
+				mpvh.configuraBotoesReproducao(this.listView.getScene());
+			}
+		}
+	}
+
+	@FXML
+	protected void anterior(ActionEvent event) {
+
+		if (listView.getSelectionModel() != null && listView.getSelectionModel().getSelectedIndices() != null
+				&& listView.getSelectionModel().getSelectedIndices().size() != 1
+				&& listView.getSelectionModel().getSelectedIndex() > 1 && listView.getSelectionModel()
+						.getSelectedIndex() < listView.getSelectionModel().getSelectedIndices().size()) {
+
+		}
+
+		Arquivo arquivo = listView.getSelectionModel().getSelectedItem();
+
+		if (null != arquivo) {
+
+			log.debug("Silenciando a media");
+
+			MediaPlayerHelper.getInstance().muteOrRemoveMute();
+
+			MediaPlayerViewHelper mpvh = new MediaPlayerViewHelper();
+			mpvh.configuraBotaoSilencio(this.listView.getScene(), MediaPlayerHelper.getInstance().isMute());
+
 		}
 	}
 
@@ -147,7 +199,7 @@ public class MediaPlayerController extends AbstractController {
 
 		Label labelDuracao = (Label) scene.lookup("#labelDuracao");
 		labelDuracao.setVisible(Boolean.TRUE);
-		
+
 		Slider slider = (Slider) scene.lookup("#sliderProgress");
 		slider.setVisible(Boolean.TRUE);
 
