@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.jhegner.smp.view.MediaPlayerController">
    <children>
       <MenuBar fx:id="menuBar" prefHeight="25.0" prefWidth="715.0">
@@ -46,7 +43,7 @@
       <Button fx:id="reproduzir" layoutX="33.0" layoutY="100.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="52.0" />
       <ImageView fitHeight="40.0" fitWidth="52.0" layoutX="37.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../img/logo.png" />
+            <Image url="/img/logo.png" />
          </image>
       </ImageView>
       <Label layoutX="26.0" layoutY="146.0" text="Reproduzir">
@@ -107,7 +104,7 @@
       </Label>
       <ImageView fx:id="imageViewAlbumImage" fitHeight="116.0" fitWidth="118.0" layoutX="130.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../img/album2.jpg" />
+            <Image url="/img/album2.jpg" />
          </image>
       </ImageView>
       <ProgressBar fx:id="progressBar" layoutX="258.0" layoutY="133.0" prefHeight="28.0" prefWidth="422.0" progress="0.0" />
